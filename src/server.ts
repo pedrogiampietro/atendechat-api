@@ -19,21 +19,18 @@ const server = app.listen(process.env.PORT, async () => {
   Promise.all(allPromises).then(() => {
     startQueueProcess();
   });
-  logger.info(`Server started on port: ${process.env.PORT}`);
+  logger.info(`Server started on port: ${process.env.PORT}!`);
 });
 
 cron.schedule("* * * * *", async () => {
-
   try {
     // console.log("Running a job at 01:00 at America/Sao_Paulo timezone")
     logger.info(`Serviço de transferencia de tickets iniciado`);
 
     await TransferTicketQueue();
-  }
-  catch (error) {
+  } catch (error) {
     logger.error(error);
   }
-
 });
 
 initIO(server);
