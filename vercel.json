@@ -3,13 +3,16 @@
   "builds": [
     {
       "src": "src/server.ts",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["dist/**", "node_modules/**"]
+      }
     }
   ],
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/src/server.ts"
+      "destination": "/dist/server.js"
     }
   ],
   "headers": [
@@ -28,6 +31,5 @@
         }
       ]
     }
-  ],
-  "buildCommand": "./build.sh"
+  ]
 }
