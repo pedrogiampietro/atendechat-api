@@ -3,7 +3,10 @@
   "builds": [
     {
       "src": "src/server.ts",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "post-build": "npm run db:migrate && npm run db:seed"
+      }
     }
   ],
   "rewrites": [
