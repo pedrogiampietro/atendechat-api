@@ -19,7 +19,7 @@ const server = app.listen(process.env.PORT, async () => {
   Promise.all(allPromises).then(() => {
     startQueueProcess();
   });
-  logger.info(`Server started on port: ${process.env.PORT}!`);
+  logger.info(`Server started on port: ${process.env.PORT}`);
 });
 
 cron.schedule("* * * * *", async () => {
