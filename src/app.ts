@@ -26,12 +26,28 @@ app.set("queues", {
 const bodyparser = require("body-parser");
 app.use(bodyParser.json({ limit: "10mb" }));
 
+app.use((_, response, next) => {
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,OPTIONS,POST,PUT,PATCH"
+  );
+  response.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  response.header("Access-Control-Expose-Headers", "x-total-count");
+
+  return next();
+});
+
 app.use(
   cors({
-    credentials: false,
-    origin: "*"
+    origin: "*",
+    credentials: true
   })
 );
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(Sentry.Handlers.requestHandler());
