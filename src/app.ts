@@ -43,7 +43,7 @@ app.use((_, response, next) => {
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://atendechat-web.vercel.app",
     credentials: true
   })
 );
