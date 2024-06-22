@@ -3,19 +3,19 @@
   "version": "6.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "build": "tsc",
-    "vercel-build": "npm run db:migrate && npm run db:seed",
-    "watch": "tsc -w",
-    "start": "npm run db:migrate && npm run db:seed && nodemon dist/server.js",
-    "dev:server": "ts-node-dev --respawn --transpile-only --ignore node_modules src/server.ts",
-    "db:migrate": "npx sequelize db:migrate",
-    "db:seed": "sequelize db:seed:all",
-    "pretest": "NODE_ENV=test sequelize db:migrate && NODE_ENV=test sequelize db:seed:all",
-    "test": "NODE_ENV=test jest",
-    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all",
-    "lint": "eslint src/**/*.ts"
-  },
+ "scripts": {
+  "build": "tsc",
+  "vercel-build": "npm run build && npm run db:migrate && npm run db:seed",
+  "watch": "tsc -w",
+  "start": "npm run db:migrate && npm run db:seed && nodemon dist/server.js",
+  "dev:server": "ts-node-dev --respawn --transpile-only --ignore node_modules src/server.ts",
+  "db:migrate": "npx sequelize db:migrate",
+  "db:seed": "sequelize db:seed:all",
+  "pretest": "NODE_ENV=test sequelize db:migrate && NODE_ENV=test sequelize db:seed:all",
+  "test": "NODE_ENV=test jest",
+  "posttest": "NODE_ENV=test sequelize db:migrate:undo:all",
+  "lint": "eslint src/**/*.ts"
+},
   "author": "",
   "license": "MIT",
   "dependencies": {
